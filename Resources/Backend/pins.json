@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "backends": [
+    {
+      "id": "nxnative",
+      "name": "nxnative",
+      "repository": "https://github.com/seedds/nxnative.git",
+      "commit": "034e91a8a64a78fb09173f9d23750c900af52b83",
+      "commit_date": "2026-11-12",
+      "requires": {
+        "macos": "26.6",
+        "xcode": "27.2",
+        "metal_toolchain": "xcodebuild -downloadComponent MetalToolchain",
+        "python": "3.12",
+        "brew": ["xcodegen", "zstd", "glslang"],
+        "pip": ["lz4", "capstone>=5,<6", "fonttools", "nsz", "zbic"],
+        "python_modules": ["lz4", "capstone", "fontTools", "zstd_or_compression.zstd"]
+      },
+      "build_command": ["python3", "scripts/build_ipa_from_nsp.py", "{input}", "--platform", "mac-app"]
+    }
+  ]
+}

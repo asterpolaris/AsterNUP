@@ -1,0 +1,67 @@
+name: Bug report
+description: Something in AsterNUP doesn't work as expected.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting. If the problem is how a game runs (graphics, sound, crashes in game), please report it to
+        [nxnative](https://github.com/seedds/nxnative/issues) instead. [Troubleshooting](https://github.com/asterpolaris/AsterNUP/blob/main/docs/TROUBLESHOOTING.md) covers common problems.
+  - type: input
+    id: version
+    attributes:
+      label: AsterNUP version
+      description: AsterNUP › About AsterNUP
+      placeholder: 0.1.0 (42)
+    validations:
+      required: true
+  - type: input
+    id: mac
+    attributes:
+      label: Mac
+      description: Chip and memory
+      placeholder: M2 Pro, 16 GB
+    validations:
+      required: true
+  - type: input
+    id: macos
+    attributes:
+      label: macOS version
+      placeholder: "26.6"
+    validations:
+      required: true
+  - type: input
+    id: backend
+    attributes:
+      label: nxnative commit
+      description: Shown in Backend & toolchain
+      placeholder: 034e91a8a6
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: What you expected, and what happened instead.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Open Import a dump
+        2. …
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs
+      description: Relevant lines from ~/Library/Logs/AsterNUP or the build logs, as text.
+      render: text
+  - type: checkboxes
+    id: content
+    attributes:
+      label: Game content
+      options:
+        - label: I am not attaching game files, keys or copyrighted content.
+          required: true

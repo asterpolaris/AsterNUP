@@ -1,0 +1,57 @@
+# XcodeGen spec for AsterNUP.xcodeproj (regenerate with: xcodegen generate).
+# The generated project and its shared scheme are committed, so XcodeGen is only needed after editing this file.
+name: AsterNUP
+options:
+  bundleIdPrefix: com.asterpolaris
+  deploymentTarget:
+    macOS: "14.0"
+  createIntermediateGroups: true
+  developmentLanguage: en
+configFiles:
+  Debug: Config/Signing.xcconfig
+  Release: Config/Signing.xcconfig
+settings:
+  base:
+    ARCHS: arm64
+    ONLY_ACTIVE_ARCH: NO
+    SWIFT_VERSION: "5.0"
+    MACOSX_DEPLOYMENT_TARGET: "14.0"
+targets:
+  AsterNUP:
+    type: application
+    platform: macOS
+    sources:
+      - path: Sources/AsterNUP
+      - path: Resources/Backend
+        type: folder
+        buildPhase: resources
+      - path: Resources/App/AppIcon.icns
+        buildPhase: resources
+      - path: Resources/App/Info.plist
+        buildPhase: none
+      - path: Resources/App/AsterNUP.entitlements
+        buildPhase: none
+    settings:
+      base:
+        INFOPLIST_FILE: Resources/App/Info.plist
+        GENERATE_INFOPLIST_FILE: NO
+        CODE_SIGN_ENTITLEMENTS: Resources/App/AsterNUP.entitlements
+        ENABLE_HARDENED_RUNTIME: YES
+        PRODUCT_NAME: AsterNUP
+        COMBINE_HIDPI_IMAGES: YES
+    dependencies:
+      - sdk: GameController.framework
+      - sdk: Carbon.framework
+schemes:
+  AsterNUP:
+    build:
+      targets:
+        AsterNUP: all
+    run:
+      config: Debug
+      commandLineArguments:
+        "--windowed": true
+    profile:
+      config: Release
+    archive:
+      config: Release

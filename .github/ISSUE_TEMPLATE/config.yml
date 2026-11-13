@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Game compatibility or emulation bugs
+    url: https://github.com/seedds/nxnative/issues
+    about: If a game builds but renders, sounds or runs wrong, report it to nxnative, the backend that builds and runs it.

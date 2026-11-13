@@ -1,0 +1,21 @@
+name: Feature request
+description: Suggest an improvement to AsterNUP.
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What would you like to do?
+      description: The problem or situation, in your own words.
+    validations:
+      required: true
+  - type: textarea
+    id: idea
+    attributes:
+      label: How could AsterNUP help?
+      description: Your idea. Remember that every action should work with a controller and with the keyboard.
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Anything else?
+      description: Workarounds you use today, similar apps that do this well, screenshots (no copyrighted game artwork).

@@ -1,0 +1,61 @@
+# --- Game content: never commit dumps, extracted content or generated games ---
+*.nup
+*.nsp
+*.nsz
+*.xci
+*.xcz
+*.ipa
+*.keys
+prod.keys
+title.keys
+*_build/
+extract/
+ExeFS/
+RomFS/
+RomFS.img
+*.metallib
+*.bfsha*
+shader_cache/
+ShaderCache/
+pipeline_cache/
+*.binarchive
+# Game saves (only at the repo root or in build output; never source folders such as Sources/AsterNUP/Saves)
+/saves/
+/save/
+*.sav
+*.dmsync
+# Generated game apps (AsterNUP's own app is built into build/ or .build/)
+Games/
+GeneratedApps/
+# --- Build products ---
+build/
+.build/
+DerivedData/
+dist/
+*.xcarchive
+*.dSYM/
+*.dSYM.zip
+# --- Backend checkout (pinned in Backend/pins.json, fetched by scripts/fetch_backend.sh) ---
+/vendor/
+/backend/
+/nxnative/
+# --- Machine-specific settings and secrets ---
+Config/Local.xcconfig
+*.xcuserstate
+xcuserdata/
+*.xcuserdatad/
+.swiftpm/
+*.p12
+*.cer
+*.mobileprovision
+*.provisionprofile
+.env
+.env.*
+*.pem
+AuthKey_*.p8
+# --- OS / tooling ---
+.DS_Store
+__pycache__/
+*.pyc
+perf-runs/
+*.log

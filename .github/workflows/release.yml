@@ -1,0 +1,30 @@
+name: Release
+
+# Push a tag like v0.2.0 to build the disk image and open a draft release with it attached.
+# The app is ad-hoc signed unless you add a Developer ID certificate (see docs/BUILDING.md); review the draft, then publish.
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+jobs:
+  dmg:
+    runs-on: macos-26   # Apple silicon
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # the build number is the commit count
+      - name: Check the version matches the tag
+        run: |
+          v=$(sed -n 's/^MARKETING_VERSION = //p' Config/Signing.xcconfig)
+          [[ "v$v" == "$GITHUB_REF_NAME" ]] || { echo "Config/Signing.xcconfig says $v, tag is $GITHUB_REF_NAME"; exit 1; }
+      - name: Build the disk image
+        run: scripts/make_dmg.sh
+      - name: Draft the release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          notes=$(awk -v v="${GITHUB_REF_NAME#v}" '$0 ~ "^## \\[?"v {f=1; next} /^## / {f=0} f' CHANGELOG.md)
+          gh release create "$GITHUB_REF_NAME" build/AsterNUP-*.dmg --draft --title "AsterNUP ${GITHUB_REF_NAME#v}" --notes "${notes:-See CHANGELOG.md}"

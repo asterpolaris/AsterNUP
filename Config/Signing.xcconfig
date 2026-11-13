@@ -1,0 +1,11 @@
+// Shared signing defaults. Put your own values in Config/Local.xcconfig (git-ignored):
+//   DEVELOPMENT_TEAM = ABCDE12345
+//   CODE_SIGN_IDENTITY = Apple Development
+//   CODE_SIGN_STYLE = Automatic
+DEVELOPMENT_TEAM =
+CODE_SIGN_IDENTITY = -
+CODE_SIGN_STYLE = Manual
+PRODUCT_BUNDLE_IDENTIFIER = com.asterpolaris.AsterNUP
+MARKETING_VERSION = 0.1.0
+CURRENT_PROJECT_VERSION = 1
+#include? "Local.xcconfig"
